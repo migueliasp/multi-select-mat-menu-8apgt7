@@ -1,54 +1,64 @@
-<h3>Simple multiselect menu example:</h3>
-
 <button mat-raised-button class="menuTrigger" [matMenuTriggerFor]="colors_menu">
-  Colors <mat-icon>arrow_drop_down</mat-icon>
+  Sort <mat-icon>sort</mat-icon>
 </button>
-
-<h3>Data driven multiselect menu example (nested):</h3>
-
-<button mat-raised-button class="menuTrigger" [matMenuTriggerFor]="animals_menu">
-  Animals <mat-icon>arrow_drop_down</mat-icon>
-</button>
-
-<p class="mat-caption">{{selectedAnimalCount}} animals selected: {{selectedAmphibianCount}} amphibians, {{selectedFishCount}} fish, {{selectedReptileCount}} reptiles.</p>
-
-<!-- #docregion color menu -->
 
 <mat-menu #colors_menu="matMenu">
+  <mat-label style="margin-left: 10px"> Sort By</mat-label>
   <button mat-menu-item (click)="selectColor($event)">
     <mat-icon class="empty">check_box_outline_blank</mat-icon>
-    <mat-icon class="checked red">check_box</mat-icon> 
-    Red
+    <mat-icon class="checked blue">check_box</mat-icon>
+    Event #
   </button>
   <button mat-menu-item (click)="selectColor($event)">
     <mat-icon class="empty">check_box_outline_blank</mat-icon>
-    <mat-icon class="checked orange">check_box</mat-icon> 
-    Orange
+    <mat-icon class="checked blue">check_box</mat-icon>
+    Ownership
   </button>
   <button mat-menu-item (click)="selectColor($event)">
     <mat-icon class="empty">check_box_outline_blank</mat-icon>
-    <mat-icon class="checked yellow">check_box</mat-icon> 
-    Yellow
+    <mat-icon class="checked blue">check_box</mat-icon>
+    Delay Dispatch
   </button>
   <button mat-menu-item (click)="selectColor($event)">
     <mat-icon class="empty">check_box_outline_blank</mat-icon>
-    <mat-icon class="checked green">check_box</mat-icon> 
-    Green
+    <mat-icon class="checked blue">check_box</mat-icon>
+    Nexty Notify Time
   </button>
   <button mat-menu-item (click)="selectColor($event)">
     <mat-icon class="empty">check_box_outline_blank</mat-icon>
-    <mat-icon class="checked blue">check_box</mat-icon> 
-    Blue
+    <mat-icon class="checked blue">check_box</mat-icon>
+    EVA
   </button>
   <button mat-menu-item (click)="selectColor($event)">
     <mat-icon class="empty">check_box_outline_blank</mat-icon>
-    <mat-icon class="checked indigo">check_box</mat-icon> 
-    Indigo
+    <mat-icon class="checked blue">check_box</mat-icon>
+    Priority
   </button>
   <button mat-menu-item (click)="selectColor($event)">
     <mat-icon class="empty">check_box_outline_blank</mat-icon>
-    <mat-icon class="checked violet">check_box</mat-icon> 
-    Violet
+    <mat-icon class="checked blue">check_box</mat-icon>
+    Active User
+  </button>
+  <button mat-menu-item (click)="selectColor($event)">
+    <mat-icon class="empty">check_box_outline_blank</mat-icon>
+    <mat-icon class="checked blue">check_box</mat-icon>
+    City
+  </button>
+  <button mat-menu-item (click)="selectColor($event)">
+    <mat-icon class="empty">check_box_outline_blank</mat-icon>
+    <mat-icon class="checked blue">check_box</mat-icon>
+    State
+  </button>
+  <mat-divider></mat-divider>
+  <button mat-menu-item (click)="selectColor($event)">
+    <mat-icon class="empty">check_box_outline_blank</mat-icon>
+    <mat-icon class="checked blue">check_box</mat-icon>
+    Sort Ascending
+  </button>
+  <button mat-menu-item (click)="selectColor($event)">
+    <mat-icon class="empty">check_box_outline_blank</mat-icon>
+    <mat-icon class="checked blue">check_box</mat-icon>
+    Sort Descending
   </button>
 </mat-menu>
 
@@ -56,29 +66,53 @@
 <!-- #docregion top level animal menu -->
 
 <mat-menu #animals_menu="matMenu">
-  <button mat-menu-item [matMenuTriggerFor]="amphibians_menu">Amphibians ({{selectedAmphibianCount}})</button>
-  <button mat-menu-item [matMenuTriggerFor]="fish_menu">Fishes ({{selectedFishCount}})</button>
-  <button mat-menu-item [matMenuTriggerFor]="reptiles_menu">Reptiles ({{selectedReptileCount}})</button>
+  <button mat-menu-item [matMenuTriggerFor]="amphibians_menu">
+    Amphibians ({{selectedAmphibianCount}})
+  </button>
+  <button mat-menu-item [matMenuTriggerFor]="fish_menu">
+    Fishes ({{selectedFishCount}})
+  </button>
+  <button mat-menu-item [matMenuTriggerFor]="reptiles_menu">
+    Reptiles ({{selectedReptileCount}})
+  </button>
 </mat-menu>
 
 <!-- #enddocregion top level animal menu -->
 <!-- #docregion data driven sub-menus -->
 
 <mat-menu #amphibians_menu="matMenu">
-  <button mat-menu-item *ngFor="let amphibian of amphibians" (click)="selectAnimal($event, amphibian)">
-    <mat-icon color="{{amphibian.selected?'primary':''}}">{{amphibian.selected?'check_box':'check_box_outline_blank'}}</mat-icon>{{amphibian.name}}
+  <button
+    mat-menu-item
+    *ngFor="let amphibian of amphibians"
+    (click)="selectAnimal($event, amphibian)"
+  >
+    <mat-icon color="{{amphibian.selected?'primary':''}}"
+      >{{amphibian.selected?'check_box':'check_box_outline_blank'}}</mat-icon
+    >{{amphibian.name}}
   </button>
 </mat-menu>
 
 <mat-menu #fish_menu="matMenu">
-  <button mat-menu-item *ngFor="let fish of fishes" (click)="selectAnimal($event, fish)">
-    <mat-icon color="{{fish.selected?'primary':''}}">{{fish.selected?'check_box':'check_box_outline_blank'}}</mat-icon>{{fish.name}}
+  <button
+    mat-menu-item
+    *ngFor="let fish of fishes"
+    (click)="selectAnimal($event, fish)"
+  >
+    <mat-icon color="{{fish.selected?'primary':''}}"
+      >{{fish.selected?'check_box':'check_box_outline_blank'}}</mat-icon
+    >{{fish.name}}
   </button>
 </mat-menu>
 
 <mat-menu #reptiles_menu="matMenu">
-  <button mat-menu-item *ngFor="let reptile of reptiles" (click)="selectAnimal($event, reptile)">
-    <mat-icon color="{{reptile.selected?'primary':''}}">{{reptile.selected?'check_box':'check_box_outline_blank'}}</mat-icon>{{reptile.name}}
+  <button
+    mat-menu-item
+    *ngFor="let reptile of reptiles"
+    (click)="selectAnimal($event, reptile)"
+  >
+    <mat-icon color="{{reptile.selected?'primary':''}}"
+      >{{reptile.selected?'check_box':'check_box_outline_blank'}}</mat-icon
+    >{{reptile.name}}
   </button>
 </mat-menu>
 

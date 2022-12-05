@@ -12,7 +12,7 @@ h3 {
   }
 }
 
-// handle visiblity of checkboxes in simple menu 
+// handle visiblity of checkboxes in simple menu
 .mat-menu-item {
   .mat-icon.checked {
     display: none;
@@ -32,10 +32,24 @@ h3 {
 }
 
 // Color menu colors
-.red { color:red }
-.orange { color:orange }
-.yellow { color:gold }
-.green { color:green }
-.blue { color:blue }
-.indigo { color:rebeccapurple }
-.violet { color:blueviolet }
+.red {
+  color: red;
+}
+.orange {
+  color: orange;
+}
+.yellow {
+  color: gold;
+}
+.green {
+  color: green;
+}
+.blue {
+  color: #0097a7;
+}
+.indigo {
+  color: rebeccapurple;
+}
+.violet {
+  color: blueviolet;
+}
