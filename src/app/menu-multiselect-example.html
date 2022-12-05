@@ -1,0 +1,89 @@
+<h3>Simple multiselect menu example:</h3>
+
+<button mat-raised-button class="menuTrigger" [matMenuTriggerFor]="colors_menu">
+  Colors <mat-icon>arrow_drop_down</mat-icon>
+</button>
+
+<h3>Data driven multiselect menu example (nested):</h3>
+
+<button mat-raised-button class="menuTrigger" [matMenuTriggerFor]="animals_menu">
+  Animals <mat-icon>arrow_drop_down</mat-icon>
+</button>
+
+<p class="mat-caption">{{selectedAnimalCount}} animals selected: {{selectedAmphibianCount}} amphibians, {{selectedFishCount}} fish, {{selectedReptileCount}} reptiles.</p>
+
+<!-- #docregion color menu -->
+
+<mat-menu #colors_menu="matMenu">
+  <button mat-menu-item (click)="selectColor($event)">
+    <mat-icon class="empty">check_box_outline_blank</mat-icon>
+    <mat-icon class="checked red">check_box</mat-icon> 
+    Red
+  </button>
+  <button mat-menu-item (click)="selectColor($event)">
+    <mat-icon class="empty">check_box_outline_blank</mat-icon>
+    <mat-icon class="checked orange">check_box</mat-icon> 
+    Orange
+  </button>
+  <button mat-menu-item (click)="selectColor($event)">
+    <mat-icon class="empty">check_box_outline_blank</mat-icon>
+    <mat-icon class="checked yellow">check_box</mat-icon> 
+    Yellow
+  </button>
+  <button mat-menu-item (click)="selectColor($event)">
+    <mat-icon class="empty">check_box_outline_blank</mat-icon>
+    <mat-icon class="checked green">check_box</mat-icon> 
+    Green
+  </button>
+  <button mat-menu-item (click)="selectColor($event)">
+    <mat-icon class="empty">check_box_outline_blank</mat-icon>
+    <mat-icon class="checked blue">check_box</mat-icon> 
+    Blue
+  </button>
+  <button mat-menu-item (click)="selectColor($event)">
+    <mat-icon class="empty">check_box_outline_blank</mat-icon>
+    <mat-icon class="checked indigo">check_box</mat-icon> 
+    Indigo
+  </button>
+  <button mat-menu-item (click)="selectColor($event)">
+    <mat-icon class="empty">check_box_outline_blank</mat-icon>
+    <mat-icon class="checked violet">check_box</mat-icon> 
+    Violet
+  </button>
+</mat-menu>
+
+<!-- #enddocregion color menu -->
+<!-- #docregion top level animal menu -->
+
+<mat-menu #animals_menu="matMenu">
+  <button mat-menu-item [matMenuTriggerFor]="amphibians_menu">Amphibians ({{selectedAmphibianCount}})</button>
+  <button mat-menu-item [matMenuTriggerFor]="fish_menu">Fishes ({{selectedFishCount}})</button>
+  <button mat-menu-item [matMenuTriggerFor]="reptiles_menu">Reptiles ({{selectedReptileCount}})</button>
+</mat-menu>
+
+<!-- #enddocregion top level animal menu -->
+<!-- #docregion data driven sub-menus -->
+
+<mat-menu #amphibians_menu="matMenu">
+  <button mat-menu-item *ngFor="let amphibian of amphibians" (click)="selectAnimal($event, amphibian)">
+    <mat-icon color="{{amphibian.selected?'primary':''}}">{{amphibian.selected?'check_box':'check_box_outline_blank'}}</mat-icon>{{amphibian.name}}
+  </button>
+</mat-menu>
+
+<mat-menu #fish_menu="matMenu">
+  <button mat-menu-item *ngFor="let fish of fishes" (click)="selectAnimal($event, fish)">
+    <mat-icon color="{{fish.selected?'primary':''}}">{{fish.selected?'check_box':'check_box_outline_blank'}}</mat-icon>{{fish.name}}
+  </button>
+</mat-menu>
+
+<mat-menu #reptiles_menu="matMenu">
+  <button mat-menu-item *ngFor="let reptile of reptiles" (click)="selectAnimal($event, reptile)">
+    <mat-icon color="{{reptile.selected?'primary':''}}">{{reptile.selected?'check_box':'check_box_outline_blank'}}</mat-icon>{{reptile.name}}
+  </button>
+</mat-menu>
+
+<!-- #enddocregion data driven sub-menus -->
+
+<!-- Copyright 2020 Google LLC. All Rights Reserved.
+    Use of this source code is governed by an MIT-style license that
+    can be found in the LICENSE file at http://angular.io/license -->
